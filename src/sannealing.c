@@ -9,6 +9,13 @@
 #include "movements.h"
 
 #define VERBOSE
+
+/* If we are compiling as part of the rpackage, do not print anything. */
+#ifdef RPACKAGE 
+#undef VERBOSE
+#endif
+
+
 #ifndef EXPLAIN
 #define explain(M, ...)
 #else
