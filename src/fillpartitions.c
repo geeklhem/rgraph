@@ -133,7 +133,7 @@ EdgeCompare(const void *p1, const void *p2)
 Bipartite projection according to the second column
 **/
 unsigned int
-ProjectBipartEdgeList(unsigned int *nd_in, unsigned int *nd_out, double *weights, int E,
+ProjectBipartEdgeList(int *nd_in, int *nd_out, double *weights, int E,
                       Partition **part_p, AdjaArray **adj_p ){
   Partition *part = NULL;
   AdjaArray *adj = NULL;
@@ -155,7 +155,7 @@ ProjectBipartEdgeList(unsigned int *nd_in, unsigned int *nd_out, double *weights
 
   double fac1 = 0;
   double fac2 = 0;
-  double strength;
+  double strength = 0;
 
   // Count the degree of each node and assign a first data structure for the
   // projected network.

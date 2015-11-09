@@ -54,7 +54,7 @@ GeneralSA(Partition **ppart, AdjaArray *adj,
   Partition *part = *ppart;
   Partition *best_part = NULL;
   unsigned int individual_movements, collective_movements;
-  unsigned int target, oldg, newg, i, g1, g2, j, empty, ncomponent, err;
+  unsigned int target, oldg, newg, i, g1, g2, j, empty = 0, ncomponent, err;
   double T = Ti;
   unsigned int nochange_count=0;
 
