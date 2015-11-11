@@ -59,7 +59,7 @@ GeneralSA(Partition **ppart, AdjaArray *adj,
   unsigned int nochange_count=0;
 
   double dE=0.0, E=0.0, previousE=0.0, best_E=-1.0/0.0;  //initial best is -infinity.
-  info ("#Simulated annealing:\n");
+  info ("#Simulated annealing:\n",NULL);
   explain ("#Ti: %f Tf: %f c: %f fac: %f\n",Ti,Tf,Ts,fac);
   explain ("#nochang_limit: %d, proba_components: %f \n",nochange_limit, proba_components);
 
@@ -73,7 +73,7 @@ GeneralSA(Partition **ppart, AdjaArray *adj,
   else
 	collective_movements = floor(fac * (double)part->N);
 
-  info ("#T\tE\tStop\n");
+  info ("#T\tE\tStop\n",NULL);
   /// SIMULATED ANNEALING ///
   for (T=Ti; T > Tf; T = T*Ts) {
 	info ("%e\t%e\t%d\n", T , E, nochange_count);
@@ -163,7 +163,7 @@ GeneralSA(Partition **ppart, AdjaArray *adj,
 							  part, adj, gen);
 		  if (err)
 			return 2;
-		  explain("Using a nested SA.\n");
+		  explain("Using a nested SA.\n",NULL);
 		}
 
 		// If the split actually gave two non empty modules...
@@ -182,13 +182,13 @@ GeneralSA(Partition **ppart, AdjaArray *adj,
 		  // Metropolis-Boltzman criterion.
 		  if ((dE >= 0) || (gsl_rng_uniform(gen) < exp(dE/T))){
 			E += dE;
-			explain("... Accepted split\n");
+			explain("... Accepted split\n",NULL);
 		  } else{
 			MergeModules(target,empty,part); // Revert the split.
-			explain("... Reverted split\n");
+			explain("... Reverted split\n",NULL);
 		  }
 		} else { //If one of the module post split is still empty.
-		  explain("Trivial split\n");
+		  explain("Trivial split\n",NULL);
 		}
 
 	  } // End of unless there is no empty group (=End of split).
